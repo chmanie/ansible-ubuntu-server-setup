@@ -11,7 +11,8 @@ Contains a few Ansible playbooks to quickly set up a new Ubuntu server or VPS wi
 Make sure your host has an up-to-date Ansible installed, and that your server has Python installed. Clone this repository locally with:
 
 ```
-git clone https://github.com/alexsydell/ansible-ubuntu-server-setup.git
+pip install ansible passlib
+git clone https://github.com/chmanie/ansible-ubuntu-server-setup.git
 ```
 
 ## Hosts
@@ -55,3 +56,10 @@ Run the following:
 ansible-playbook secure.yml -i "YOUR_HOST," --ask-become-pass
 ```
 
+## Optional packages
+
+Installs 'git', 'htop', 'locales-all', 'unzip', 'mosh', 'neovim', 'tmux'
+
+```
+ansible-playbook setup_optional_packages.yml -i "YOUR_HOST," --ask-become-pass
+```

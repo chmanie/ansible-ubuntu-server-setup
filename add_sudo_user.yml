@@ -44,8 +44,5 @@
       apt: name=sudo update_cache=yes state=present cache_valid_time=86400
 
     - name: add user to sudoers
-      lineinfile: dest=/etc/sudoers
-                  regexp="{{ user }} ALL"
-                  line="{{ user }} ALL=(ALL) ALL"
-                  state=present
+      command: usermod -aG sudo {{ user }}
 

@@ -1,7 +1,6 @@
 ---
 - hosts: all
   remote_user: root
-  ask_pass: yes
 
   vars_prompt:
     - name: "new_root_password"
