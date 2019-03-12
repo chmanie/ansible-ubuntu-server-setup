@@ -1,0 +1,27 @@
+---
+vars_prompt:
+  - name: "user"
+    prompt: "User to configure for"
+    private: no
+    default: "chris"
+
+# Install packages
+- name: update apt
+  apt: update_cache=yes cache_valid_time=86400
+
+- name: install packages
+  apt: name={{ item }} state=latest
+  with_items:
+    - mosh
+    - neovim
+    - tmux
+
+# Configure packages
+- name: ufw allow mosh traffic
+  ufw: rule=allow port=60000:60020 proto=udp
+
+- name: set nvim as default editor
+  command: update-alternatives --set editor /usr/bin/nvim
+
+- name: copy tmux config file
+  copy: src=files/tmux.conf dest=/home/{{ user }}/.tmux.conf owner={{ user }} group={{ user }} mode=644
