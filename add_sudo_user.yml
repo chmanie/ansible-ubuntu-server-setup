@@ -6,7 +6,7 @@
     - name: "user"
       prompt: "New username"
       private: no
-      default: "deploy"
+      default: "chris"
 
     - name: "password"
       prompt: "New user password"
